@@ -12,7 +12,7 @@ As a developer you can get the IRegistry adapter from a content object and next
 use it as you want to get/set your configuration stuff.
 
 As a content administrator you can manage the configuration stored in a content
-by calling the view $content_url/context_registry/view where $content_url must
+by calling the view $content_url/contextual_registry/view where $content_url must
 be replaced by the url of your content item.
 
 How to install
