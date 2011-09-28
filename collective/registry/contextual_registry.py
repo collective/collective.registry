@@ -1,10 +1,12 @@
 from zope import interface
 from plone.registry import interfaces
 from plone.app.registry import Registry
+from Products.Five.browser import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
 
-ATTRIBUTE_NAME = 'collective_registry'
+ATTRIBUTE_NAME = 'contextual_registry'
 
-class RegistryAdapter(object):
+class ContextualRegistry(object):
     """The configuration registry
     """
     interface.implements(interfaces.IRegistry)
@@ -100,3 +102,25 @@ class RegistryAdapter(object):
             self.initialize_registry()
         return self.registry.registerInterface(interface, omit=omit, 
                                                prefix=prefix)
+
+
+class ContextualRegistryInitializer(BrowserView):
+    """A view to initialize the registry over the context"""
+    
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+        
+    def initialize(self):
+        registry = interfaces.IRegistry(self.context)
+        if hasattr(registry, 'initialize_registry'):
+            registry.initialize_registry()
+            url = self.context.absolute_url()+'/'+ATTRIBUTE_NAME+'/view'
+        else:
+            msg = u"no initialize_registry method on this context"
+            IStatusMessage(self.request).add(msg, type="error")
+            url = self.context.absolute_url()
+        self.request.response.redirect(url)
+    
+    def __call__(self):
+        self.initialize()
