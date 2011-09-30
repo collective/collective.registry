@@ -86,10 +86,11 @@ class ContextualRegistry(object):
         an error will be raised if one or more fields in the interface does
         not have an equivalent setting.
         """
-        if self.registry is None:
+        if self.registry is None and not check:
             #return empty recordsproxy
             return RecordsProxy(self, interface, omitted=omit, prefix=prefix)
-
+        elif self.registry is None and check:
+            raise KeyError()
         return self.registry.forInterface(interface, check=check, omit=omit,
                                           prefix=prefix)
         
