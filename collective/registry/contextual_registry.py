@@ -3,6 +3,7 @@ from plone.registry import interfaces
 from plone.app.registry import Registry
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
+from plone.registry.recordsproxy import RecordsProxy
 
 ATTRIBUTE_NAME = 'contextual_registry'
 
@@ -85,6 +86,9 @@ class ContextualRegistry(object):
         an error will be raised if one or more fields in the interface does
         not have an equivalent setting.
         """
+        if self.registry is None:
+            #return empty recordsproxy
+            return RecordsProxy(self, interface, omitted=omit, prefix=prefix)
 
         return self.registry.forInterface(interface, check=check, omit=omit,
                                           prefix=prefix)
