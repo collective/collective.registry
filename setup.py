@@ -5,7 +5,7 @@ version = '1.0'
 
 setup(name='collective.registry',
       version=version,
-      description="Extend plone.app.registry by implementing IRegistry with an adapter on content",
+      description="Extend plone.app.registry by implementing IRegistry with an adapter on context",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -16,7 +16,7 @@ setup(name='collective.registry',
         "Framework :: Plone :: 4.1",
         "Programming Language :: Python",
         ],
-      keywords='',
+      keywords='plone registry',
       author='Jean-Michel FRANCOIS (toutpt)',
       author_email='toutpt@gmail.com',
       url='https://github.com/collective/collective.registry',

@@ -2,8 +2,8 @@ Introduction
 ============
 
 This add-on extends plone.app.registry by adding a contextual registry
-which can be used over any object. It has been created to store view configuration
-throw the add-on collective.configviews 2.X
+which can be used over any object. It has been created to store view
+configuration throw the add-on collective.configviews 2.X
 
 How to use this add-on
 ======================
@@ -18,7 +18,7 @@ be replaced by the url of your content item.
 How to install
 ==============
 
-Please follow the documentation on plone.org: plone.org/documentation/kb/installing-add-ons-quick-how-to
+Please follow the official documentation_.
 
 Credits
 =======
@@ -30,4 +30,4 @@ Credits
 
 .. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
 .. _makinacom:  http://www.makina-corpus.com
-
+.. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to
